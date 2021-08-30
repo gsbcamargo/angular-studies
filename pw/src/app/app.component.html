@@ -7,21 +7,21 @@
 
 <div>
   <label>Use Letters</label>
-  <input type="checkbox" />
+  <input (change)="onChangeUseLetters()" type="checkbox" />
 </div>
 
 <div>
   <label>Use Numbers</label>
-  <input type="checkbox" />
+  <input (change)="onChangeUseNumbers()" type="checkbox" />
 </div>
 
 <div>
   <label>Use Symbols</label>
-  <input type="checkbox" />
+  <input (change)="onChangeUseSymbols()" type="checkbox" />
 </div>
 
 <div> 
-  <button (click)="onButtonClick()">Generate!</button>
+  <button (click)="onButtonClick()">Generate!</button> <!-- event binding syntax (i want to watch this method)-->
 </div>
 
 <div>
