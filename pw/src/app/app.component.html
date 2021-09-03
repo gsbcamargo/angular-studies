@@ -37,13 +37,14 @@
 
       <button [disabled]="
           !(length && (includeLetters || includeSymbols || includeNumbers))
-        " (click)="onButtonClick()" class="button is-link is-fullwidth">
+        " (click)="onButtonClick()" class="button is-link is-fullwidth"> <!-- event binding syntax (i want to watch this method)-->
         Generate!
       </button>
 
-      <div class="box">
-        <label>Your Password</label>
-        <input class="input" [value]="password" />
+      <div class="box" *ngIf="password"> <!-- structural directives (adds or removes html elements)-->
+        <!-- basically goes into the component class and looks for the mentioned attribute, if is truthy or falsy -->
+        <label>Your Password</label> 
+        <input class="input" [value]="password" /> <!-- property binding syntax [name of the property to be set]="name of the property/method in our class" -->
       </div>
     </div>
   </div>
