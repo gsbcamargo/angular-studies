@@ -35,8 +35,17 @@
         </div>
       </div>
 
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onChangeUseCapitalLetters()" type="checkbox" />
+            Use Capital Letters
+          </label>
+        </div>
+      </div>
+
       <button [disabled]="
-          !(length && (includeLetters || includeSymbols || includeNumbers))
+          !(length && (includeLetters || includeSymbols || includeNumbers || includeCapitalLetters))
         " (click)="onButtonClick()" class="button is-link is-fullwidth"> <!-- event binding syntax (i want to watch this method)-->
         Generate!
       </button>

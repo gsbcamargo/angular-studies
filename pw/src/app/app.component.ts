@@ -10,6 +10,7 @@ export class AppComponent {
   includeLetters = false;
   includeNumbers = false;
   includeSymbols = false;
+  includeCapitalLetters = false;
   password = '';
 
   onChangeLength(event: Event) {
@@ -33,10 +34,15 @@ export class AppComponent {
     this.includeSymbols = !this.includeSymbols;
   }
 
+  onChangeUseCapitalLetters() {
+    this.includeCapitalLetters = !this.includeCapitalLetters;
+  }
+
   onButtonClick() {
     const numbers = '1234567890';
     const letters = 'abcdefghijklmnopqrstuvwxyz';
     const symbols = '!@#$%^&*()';
+    const capitalLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
     let validChars = '';
     if (this.includeLetters) {
@@ -47,6 +53,9 @@ export class AppComponent {
     }
     if (this.includeSymbols) {
       validChars += symbols;
+    }
+    if (this.includeCapitalLetters) {
+      validChars += capitalLetters;
     }
 
     let generatedPassword = '';
