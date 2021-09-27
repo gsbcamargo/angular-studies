@@ -19,6 +19,8 @@ export class AppComponent {
 
     if (!isNaN(parsedValue)) {
       this.length = parsedValue;
+    } else if (isNaN(parsedValue)) {
+      alert('Please insert a number.');
     }
   }
 
