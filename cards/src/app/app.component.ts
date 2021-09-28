@@ -25,5 +25,5 @@ export class AppComponent {
       username: 'biking12222',
       content: 'I did some biking today!'
     }
-  ]
+  ];
 }
