@@ -17,7 +17,7 @@ export class AppComponent {
       newRandomWord = random.word();
       wordArray.push(newRandomWord);
     }
-    return wordArray.join(' ');
+    return wordArray.join(' ').toLowerCase();
   }
 
 
