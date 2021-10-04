@@ -7,7 +7,9 @@ import { random } from 'faker';
 })
 export class AppComponent {
 
-  randomSentence: string = this.randomSentenceGenerator();
+  public randomText: string = this.randomSentenceGenerator();
+  public enteredText: string = '';
+  public solved: boolean = false;
 
   randomSentenceGenerator(): string {
     let wordArray: Array<string> = [];
@@ -20,6 +22,36 @@ export class AppComponent {
     return wordArray.join(' ').toLowerCase();
   }
 
+  onInput(value: string) {
+    this.enteredText = value;
+  }
+
+  compare(randomLetter: string, enteredLetter: string) {
+    if(!enteredLetter) {
+      return 'pending';
+    }
+
+    return randomLetter === enteredLetter ? 'correct' : 'incorrect';
+  }
+
+
+
+  
+  // onTypeEventCheckIfEqualToText(event: Event) {
+  //   const target = event.target as HTMLInputElement;
+  //   const stringifiedEvent = target.toString();
+  //   let typedArray: Array<string> = [];
+
+
+  //   this.randomSentence.split(' ').forEach(element => {
+  //     if(stringifiedEvent !== element) {
+  //       element.style.color = "red";
+  //     } else {
+  //       element.style.color = "green";
+  //     }
+  //   });
+  // }
+  
 
   // randomWords(words: number): string {
   //   let fs = require('fs');

@@ -8,14 +8,16 @@
       </div>
 
       <div>
-        <p class="has-text-centered"> {{ randomSentence }}</p>
+        <p class="has-text-centered"> 
+          <span [class]="compare(letter,  enteredText[i])" *ngFor="let letter of randomText.split(''); let i = index;">{{ letter }}</span>
+        </p>
       </div>
 
       <div class="field">
-        <input class="input" placeholder="Lorem ipsum dolor sit amet" />
+        <input #userInput class="input" placeholder="Write here!" (input)="onInput(userInput.value)" />
       </div>
 
-      <div class="box has-text-centered">
+      <div *ngIf="randomText === enteredText" class="box has-text-centered">
         <h1 class="title">You win!</h1>
       </div>
 
