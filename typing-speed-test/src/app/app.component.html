@@ -17,6 +17,16 @@
         <input #userInput class="input" placeholder="Write here!" (input)="onInput(userInput.value)" />
       </div>
 
+      <div *ngIf="timeLeft > 0; else templateMessage">
+        <h3 id="">{{ timeLeft }}</h3>
+      </div>
+
+      <div>
+        <ng-template #templateMessage> 
+          <h3>{{ message }}</h3>
+        </ng-template>
+      </div>
+
       <div *ngIf="randomText === enteredText" class="box has-text-centered">
         <h1 class="title">You win!</h1>
       </div>

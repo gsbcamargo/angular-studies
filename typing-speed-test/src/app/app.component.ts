@@ -1,20 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { random } from 'faker';
+import { Subscription, timer } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
 
   public randomText: string = this.randomSentenceGenerator();
   public enteredText: string = '';
   public solved: boolean = false;
+  public message: string = 'Time\'s up!';
 
   randomSentenceGenerator(): string {
     let wordArray: Array<string> = [];
 
-     for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 8; i++) {
       let newRandomWord = '';
       newRandomWord = random.word();
       wordArray.push(newRandomWord);
@@ -27,16 +29,35 @@ export class AppComponent {
   }
 
   compare(randomLetter: string, enteredLetter: string) {
-    if(!enteredLetter) {
+    if (!enteredLetter) {
       return 'pending';
     }
 
     return randomLetter === enteredLetter ? 'correct' : 'incorrect';
   }
 
+  countDown: Subscription | null = new Subscription;
+  timeLeft = 4;
+  tick = 1000;
+  ngOnInit() {
+    this.countDown = timer(0, this.tick).subscribe(() => --this.timeLeft);
+  }
+  ngOnDestroy() {
+    this.countDown = null;
+  }
+
+}
 
 
-  
+
+
+
+
+
+
+
+
+
   // onTypeEventCheckIfEqualToText(event: Event) {
   //   const target = event.target as HTMLInputElement;
   //   const stringifiedEvent = target.toString();
@@ -51,7 +72,7 @@ export class AppComponent {
   //     }
   //   });
   // }
-  
+
 
   // randomWords(words: number): string {
   //   let fs = require('fs');
@@ -83,5 +104,3 @@ export class AppComponent {
   //     wordArray = randomWords.join(' ');
   //   }
   // }
-
-}
